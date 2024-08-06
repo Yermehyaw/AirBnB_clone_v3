@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 """
-Modules/func/variables Imported: flask, storage, app_views
+Modules/func/variables Imported: flask, storage, app_views, getenv
 """
 from views import app_views
 from flask import Flask
+from os import getenv
 from models import storage
 
 
