@@ -59,7 +59,16 @@ Classes inherited from Base Model:
 * `def all(self)` - returns the dictionary __objects
 * `def new(self, obj)` - sets in __objects the obj with key <obj class name>.id
 * `def save(self)` - serializes __objects to the JSON file (path: __file_path)
-* ` def reload(self)` -  deserializes the JSON file to __objects
+* `def reload(self)` -  deserializes the JSON file to __objects
+* `def get(self, cls, id)` - get a class object from storage
+* `def count(self, cls=None)` - return the no of objects of a class in storage
+[db_storage.py](/models/engine/db_storage.py) - save instances of class to MySQL DB
+* `def all(self)` - returns the dictionary __session
+* `def new(self, obj)` - sets in __session the obj with key <obj class name>.id
+* `def save(self)` - saves created objects in  __session
+* `def reload(self)` -  load saved objects from DB into __session
+* `def get(self, cls, id)` - get a class object from DB
+* `def count(self, cls=None)` - return the no of objects of a class in DB
 
 #### '/api/v1' REST API serving objects of this project:
 [app.py](/api/v1/app.py) - serves JSON representation of Class objects e.g States, Places, Amenities etc
