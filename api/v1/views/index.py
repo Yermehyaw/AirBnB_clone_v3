@@ -7,7 +7,7 @@ jsonify(method): transform objects into JSON
 storage(instance): DBStorage() or FileStorage() instance
 main app classes: State, Amenity, Places etc
 """
-from api.v1.views import app_views
+from views import app_views
 from flask import jsonify
 from models import storage
 from models.amenity import Amenity
