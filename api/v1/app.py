@@ -2,9 +2,9 @@
 """
 Modules/func/variables Imported: flask, storage, app_views
 """
+from api.v1.views import app_views
 from flask import Flask
 from models import storage
-from api.v1.views import app_views
 
 
 app = Flask(__name__, instance.realtive_config=False)
