@@ -71,9 +71,8 @@ class FileStorage:
             self.reload()  # retrieve all objects from JSON file
             all_obj_dict = self.all(cls)
             for key, obj in all_obj_dict.items():
-                for obj in all_obj_dict.values():  # check key on all objs
-                    if f'{obj.__class__.__name__}.{id}' == key:
-                        return obj
+                if f'{obj.__class__.__name__}.{id}' == key:
+                    return obj
         return None
 
     def count(self, cls=None):
