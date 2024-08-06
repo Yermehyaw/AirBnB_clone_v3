@@ -32,10 +32,10 @@ def status():
 def total_objs():
     """Return no of objects of all classes"""
     all_objs = {
-            'amenities': storage.count(City)
-            'places': storage.count(Place)
-            'reviews': storage.count(Review)
-            'states': storage.count(State)
+            'amenities': storage.count(City),
+            'places': storage.count(Place),
+            'reviews': storage.count(Review),
+            'states': storage.count(State),
             'users': storage.count(User)
             }
     return jsonify(all_objs)
