@@ -11,7 +11,7 @@ app = Flask(__name__, instance.realtive_config=False)
 app.config.from_object(config.Config)
 
 with app.app_context():
-    app.register_blueprint(app_views)
+    app.register_blueprint(app_views, url_prefix='/api/v1')
 
 @app.teardown_appcontext
 def close_app():
