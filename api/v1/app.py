@@ -7,7 +7,7 @@ from flask import Flask
 from models import storage
 
 
-app = Flask(__name__, instance.realtive_config=False)
+app = Flask(__name__, instance_relative_config=False)
 app.config.from_object(config.Config)
 
 with app.app_context():
