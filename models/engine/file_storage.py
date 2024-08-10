@@ -67,17 +67,16 @@ class FileStorage:
 
     def get(self, cls, id):
         """Retrive a valid class object specified by its id attribute"""
+        cls_id = id
         if cls is not None and id is not None:
-            self.reload()  # retrieve all objects from JSON file
             all_obj_dict = self.all(cls)
             for key, obj in all_obj_dict.items():
-                if f'{obj.__class__.__name__}.{id}' == key:
+                if f'{obj.__class__.__name__}.{cls_id}' == key:
                     return obj
         return None
 
     def count(self, cls=None):
         """Return no of objects of a spec class or all classes in storage"""
-        self.reload()
         all_obj_dict = self.all(cls)
         no_obj = len(all_obj_dict)
         return no_obj
