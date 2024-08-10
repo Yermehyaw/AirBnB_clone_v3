@@ -2,10 +2,10 @@
 """
 Modules/func/variables Imported: flask, storage, app_views, getenv
 """
+from models import storage
 from views import app_views
 from flask import Flask
 from os import getenv
-from models import storage
 
 
 app = Flask(__name__, instance_relative_config=False)
