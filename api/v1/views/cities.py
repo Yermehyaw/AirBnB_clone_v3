@@ -25,25 +25,25 @@ def all_cities(state_id):
         storage.close()
         abort(404)
 
-    cities_obj_list = state_obj.cities()
-    for obj in cities_obj_list:
+    city_obj_list = state_obj.cities()
+    for obj in city_obj_list:
         obj = obj.to_dict())
 
     storage.close()
-    return jsonify(cities_obj_list), 200
+    return jsonify(city_obj_list), 200
 
-@app_views.route('/states/<state_id>', methods=['GET'], strict_slashes=False)
-def spec_state(state_id):
+@app_views.route('/cities/<city_id>', methods=['GET'], strict_slashes=False)
+def spec_state(city_id):
     """Return a specified state object by its unique id"""
     storage.reload()
-    state_obj = storage.get(State, state_id)
-    if state_obj is None:
+    city_obj = storage.get(City, city_id)
+    if city_obj is None:
         storage.close()
         abort(404)
-    state_obj_dict = state_obj.to_dict()
+    city_obj_dict = city_obj.to_dict()
 
     storage.close()
-    return jsonify(state_obj_dict), 200
+    return jsonify(city_obj_dict), 200
 
 @app_views.route('/states/<state_id>', methods=['DELETE'], strict_slashes=False)
 def delete_state(state_id):
