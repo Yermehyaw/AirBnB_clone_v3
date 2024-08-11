@@ -65,7 +65,7 @@ def create_state():
         abort(400, 'Missing Name')
     req_state = request.get_json()
     new_state = State()
-    new-state.name = req_state['name']
+    new_state.name = req_state['name']
 
     storage.reload()
     storage.new(new_state)
