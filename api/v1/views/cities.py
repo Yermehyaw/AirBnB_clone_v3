@@ -12,25 +12,24 @@ from models.state import State
 
 
 # The full url is '/api/v1/states', '/ap1/v1' is the defined url_prefix
-@app_views.route('/states/<state_id>/cities', 
-                methods=['GET'], 
-                strict_slashes=False
-            )
+@app_views.route(
+    '/states/<state_id>/cities',
+    methods=['GET'],
+    strict_slashes=False
+)
 def all_cities(state_id):
     """Return list of all city objects in JSON"""
     storage.reload()  # load prev saved objects from db or json file
-
     state_obj = storage.get(State, state_id)
     if not state_obj:
         storage.close()
         abort(404)
-
     city_obj_list = state_obj.cities()
     for obj in city_obj_list:
-        obj = obj.to_dict())
-
+        obj = obj.to_dict()
     storage.close()
     return jsonify(city_obj_list), 200
+
 
 @app_views.route('/cities/<city_id>', methods=['GET'], strict_slashes=False)
 def spec_city(city_id):
@@ -45,7 +44,12 @@ def spec_city(city_id):
     storage.close()
     return jsonify(city_obj_dict), 200
 
-@app_views.route('/states/<state_id>', methods=['DELETE'], strict_slashes=False)
+
+@app_views.route(
+    '/states/<state_id>',
+    methods=['DELETE'],
+    strict_slashes=False
+)
 def delete_state(state_id):
     """Delete a specified state object in storage"""
     storage.reload()
@@ -57,6 +61,7 @@ def delete_state(state_id):
         storage.delete(state_obj)
         storage.close()
         return jsonify({}), 200
+
 
 @app_views.route('/states', methods=['POST'], strict_slashes=False)
 def create_state():
@@ -75,6 +80,7 @@ def create_state():
     storage.close()
 
     return jsonify(new_state.to_dict()), 201
+
 
 @app_views.route('/states/<state_id>', methods=['PUT'], strict_slashes=False)
 def update_state(state_id):
