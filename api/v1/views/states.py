@@ -12,7 +12,7 @@ from models.state import State
 
 # The full url is '/api/v1/states', '/ap1/v1' is the defined url_prefix
 @app_views.route('/states', methods=['GET'], strict_slashes=False)
-def all_staes():
+def all_states():
     """Return list of all state objects in JSON"""
     storage.reload()  # load prev saved objects from db or json file
     all_state_list = []
