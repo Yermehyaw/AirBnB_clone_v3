@@ -33,7 +33,7 @@ def all_cities(state_id):
     return jsonify(city_obj_list), 200
 
 @app_views.route('/cities/<city_id>', methods=['GET'], strict_slashes=False)
-def spec_state(city_id):
+def spec_city(city_id):
     """Return a specified state object by its unique id"""
     storage.reload()
     city_obj = storage.get(City, city_id)
