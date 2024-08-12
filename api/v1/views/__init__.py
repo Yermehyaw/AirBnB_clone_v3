@@ -15,3 +15,4 @@ app_views = Blueprint('app_views',
 
 from .index import *
 from .states import *
+from .cities import *
