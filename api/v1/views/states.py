@@ -23,6 +23,7 @@ def all_states():
     storage.close()
     return jsonify(all_state_list), 200
 
+
 @app_views.route('/states/<state_id>', methods=['GET'], strict_slashes=False)
 def spec_state(state_id):
     """Return a specified state object by its unique id"""
@@ -36,7 +37,12 @@ def spec_state(state_id):
     storage.close()
     return jsonify(state_obj_dict), 200
 
-@app_views.route('/states/<state_id>', methods=['DELETE'], strict_slashes=False)
+
+@app_views.route(
+    '/states/<state_id>',
+    methods=['DELETE'],
+    strict_slashes=False
+)
 def delete_state(state_id):
     """Delete a specified state object in storage"""
     storage.reload()
@@ -49,6 +55,7 @@ def delete_state(state_id):
         storage.close()
         return jsonify({}), 200
 
+
 @app_views.route('/states', methods=['POST'], strict_slashes=False)
 def create_state():
     """Create a new state object in storage"""
@@ -58,7 +65,7 @@ def create_state():
         abort(400, 'Missing Name')
     req_state = request.get_json()
     new_state = State()
-    new-state.name = req_state['name']
+    new_state.name = req_state['name']
 
     storage.reload()
     storage.new(new_state)
@@ -66,6 +73,7 @@ def create_state():
     storage.close()
 
     return jsonify(new_state.to_dict()), 201
+
 
 @app_views.route('/states/<state_id>', methods=['PUT'], strict_slashes=False)
 def update_state(state_id):
