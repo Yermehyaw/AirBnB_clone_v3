@@ -25,7 +25,7 @@ def all_cities(state_id):
         storage.close()
         abort(404)
 
-    city_obj_list = state_obj.cities()
+    city_obj_list = state_obj.cities
     for obj in city_obj_list:
         obj = obj.to_dict())
 
